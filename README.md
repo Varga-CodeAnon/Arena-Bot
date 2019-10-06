@@ -31,7 +31,7 @@ Un bot Discord écrit en Python conçu pour gérer notre serveur et collecter le
 
 L'installation de ce bot est entièrement à la charge des utilisateurs, nous ne proposons pas ce bot en tant que service. Si vous souhaitez intégrer ce bot à votre serveur discord, il faut donc en faire le déploiement manuellement.
 
-Il existe de nombreuses manières de déployer un bot discord. L'une des plus simple (et gratuite) et de passer par le service [HEROKU APP]().
+Il existe de nombreuses manières de déployer un bot discord. L'une des plus simple (et gratuite) et de passer par le service [HEROKU APP](https://www.heroku.com/python).
 
 ## Les bonnes adresses pour apprendre à déployer un bot :
 
