@@ -185,7 +185,7 @@ async def classement_hebdo():
             continue
         reponse += "\n- " + challenger[1] + " : " + str(challenger[0]) + " pts"
     await channel.send(reponse + '```' + "\nÀ vendredi prochain ! :flag_black:*")  # et on envoie le tout
-    await start_timer()  # on relance pour le vendredi prochain
+#    await start_timer()  # on relance pour le vendredi prochain
 
 
 # ------------------------------- MINUTEUR ---------------------------------- #
@@ -324,7 +324,7 @@ async def rang(ctx):
 async def publication(ctx, now=None):
     """Publie le classement hebdomadaire des challengers"""
     await logs(ctx, "publication")
-    await start_timer()  # on demmare un compteur
+#    await start_timer()  # on demmare un compteur
     if now is not None:
         await classement_hebdo()
 
@@ -376,3 +376,4 @@ async def close(ctx):
 # la lettre correspondante !""")
 # ================================== MAIN =================================== #
 arena_bot.run(token)  # on pouvait difficilement faire plus court
+
