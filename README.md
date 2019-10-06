@@ -31,12 +31,12 @@ Un bot Discord écrit en Python conçu pour gérer notre serveur et collecter le
 
 L'installation de ce bot est entièrement à la charge des utilisateurs, nous ne proposons pas ce bot en tant que service. Si vous souhaitez intégrer ce bot à votre serveur discord, il faut donc en faire le déploiement manuellement.
 
-Il existe de nombreuses manière de déployer un bot discord. L'une des plus simple (et gratuite) et de passer par le service [HEROKU APP](). Ce dernier permet par exemple d'héberger des applications python, parfait pour nous puisque ce bot en est justement une ;) !
+Il existe de nombreuses manières de déployer un bot discord. L'une des plus simple (et gratuite) et de passer par le service [HEROKU APP]().
 
 ## Les bonnes adresses pour apprendre à déployer un bot :
 
-+ **Avec heroku** : [vidéo d'aide](https://www.youtube.com/watch?v=BPvg9bndP1U)
-+ Nous proposons aussi un [tuto](TUTO.md) pour déployer un bot depuis zéro sur sa propre machine.
++ Avec Heroku : [vidéo d'aide](https://www.youtube.com/watch?v=BPvg9bndP1U)
++ Sur son serveur local : [tuto](TUTO.md)
 
 ## Résumé des commandes offertes par le bot Arena
 
@@ -66,7 +66,7 @@ Cette section s'adresse aux développeurs souhaitant contribuer au développemen
 
 ## Instructions
 
-Des instructions sur le procédé de création d'un bot discord sont disponibles [ici](TUTO.md). N'hésitez pas à les lires si c'est la première fois que vous codez un bot discord.
+Des instructions sur le procédé de création d'un bot discord sont disponibles [ici](TUTO.md). N'hésitez pas à les lires, surtout  si c'est la première fois que vous codez un bot discord.
 
 ## Installation des outils
 
