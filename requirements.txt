@@ -1,0 +1,3 @@
+# Dépendances python3
+
+discord>=1.0.1
