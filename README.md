@@ -1,4 +1,5 @@
 # Arena-Bot
+
 Un bot Discord écrit en Python conçu pour gérer notre serveur et collecter les résultats de nos membres sur des sites tels que Root-Me ou WeChall.
 
 ```
@@ -25,65 +26,70 @@ Un bot Discord écrit en Python conçu pour gérer notre serveur et collecter le
 |                                                                                                                 |
 +-----------------------------------------------------------------------------------------------------------------+
 ```
-Testé sous Python 3.7, mais normalement fonctionnel pour Python 3.5.3 <
 
-# Déploiement
-## Prérequis
+# Pour les utilisateurs
 
-1. Pour commencer, il faut installer la librairie discord à l'aide de l'utilitaire `pip`. Sous linux, il s'agit de la commande :
-```shell
-    ~$ python3 -m pip install -U discord.py
+L'installation de ce bot est entièrement à la charge des utilisateurs, nous ne proposons pas ce bot en tant que service. Si vous souhaitez intégrer ce bot à votre serveur discord, il faut donc en faire le déploiement manuellement.
+
+Il existe de nombreuses manière de déployer un bot discord. L'une des plus simple (et gratuite) et de passer par le service [HEROKU APP](). Ce dernier permet par exemple d'héberger des applications python, parfait pour nous puisque ce bot en est justement une ;) !
+
+## Les bonnes adresses pour apprendre à déployer un bot :
+
++ **Avec heroku** : [vidéo d'aide](https://www.youtube.com/watch?v=BPvg9bndP1U)
++ Nous proposons aussi un [tuto](TUTO.md) pour déployer un bot depuis zéro sur sa propre machine.
+
+## Résumé des commandes offertes par le bot Arena
+
+```
+Arena - Bot permettant la collecte et le traitement des scores sur root-me ou wechall
+
+​No Category:
+  addUser     Ajoute le challenger <pseudo> à la liste des challengers
+  close       Fait jouer le bot à "Local fermé" 
+  delUser     Supprime le challenger <pseudo> de la liste des challengers
+  flag        Récompense une CTF réussie
+  help        Shows this message
+  open        Fait jouer le bot à "Local ouvert !" 
+  ping        Ping le bot
+  publication Publie le classement hebdomadaire des challengers
+  rang        Affiche le classement actuel des challengers
+  scoreUser   Affiche le score du challenger <pseudo>
+
+Type !help command for more info on a command.
+You can also type !help category for more info on a category.
 ```
 
-2. On crée ensuite un serveur discord. En supposant que vous ayez déjà un compte, cette opération se fait très
-   facilement en appuyant sur le '+' en-dessous de la liste des serveurs se situant à gauche de l'interface
 
-## Mise au monde du Bot
+# Pour les développeurs
 
-On crée le bot depuis le site officiel de Discord, à l'adresse https://discordapp.com/developers/applications/
-La procédure est guidée, mais si jamais vous rencontrez un problème, n'hésitez pas à regarder du côté de la documentation
-ci-contre : https://discordapp.com/developers/docs/intro
+Cette section s'adresse aux développeurs souhaitant contribuer au développement du bot.
 
-## Codage du Bot
+## Instructions
 
-1. On commence avec la précision de l'encodage ainsi que l'import des librairies
-2. On crée ensuite une variable `token` qui recevra le dit token qui représente une longue série de chiffres à garder
-   privée
-3. On choisi un préfixe qui précèdera les commandes qui invoqueront notre bot, ainsi qu'une petite description
-   de ce dernier
-4. Pour s'assurer que le bot est actif, on crée une fonction permettant d'afficher dans le terminal \*Bot is ready\*
-5. On rajoute la commande de démarrage (dernière ligne du fichier)
-5. Enfin, on crée les commandes auxquelles le bot devra répondre
+Des instructions sur le procédé de création d'un bot discord sont disponibles [ici](TUTO.md). N'hésitez pas à les lires si c'est la première fois que vous codez un bot discord.
 
-Les commandes auront dans la majorité des cas la même en-tête, à savoir :
+## Installation des outils
 
-    @arena_bot.command()
-    async def <commande>(ctx, <param1>, <param2>, ...):
+### Python3
 
-Pour le reste, chaque fonction du programme est commentée dans le but de s'en inspirer, n'hésitez pas à les lire.
+Contribuer au développement de ce bot nécessite l'installation de python3 (*testé en 3.7*). On peut installer python3 depuis [ce lien](https://www.python.org/downloads/)
 
-## Mise en place du bot
+### Dépendances
 
-### Initialisation des variables d'environnement
-Sous linux, il existe différents *"degrés"* de variables d'environnement dont la configuration change selon les shells utilisés.
-De manière très simple, il est possible d'initialiser ces variables en les ajoutant au fichier `/etc/environment` de cette manière :
+Pour que le bot soit fonctionnel, nous utilisons un package appellé [discord.py](https://discordpy.readthedocs.io/en/latest/). Il permet de faire la connexion entre le bot et les services de discord.
+
+Pour installer cette dépendance et commencer à contribuer au développement, vous pouvez saisir les commandes suivantes :
+
+**[1] Clonage des sources**
 ```shell
-# echo "arena_token="AAZEsqdqshjkrzFrDuib1345978qds31435a4ze!$Azesd"" >> /etc/environment
+$ git clone git@github.com:codeanonorg/Arena-Bot.git
 ```
-### Last step !
-Une fois le bot crée et codé, rendez-vous à l'adresse https://discordapp.com/developers/applications/
-Cliquez dans la section *Bot* du pannel de gauche, et créez votre bot (vous serez averti que cette action est
-irreversible).
 
-On peut donc voir que notre bot a pris vie, et qu'il s'est vu attribuer un *token*. Comme dit précédemment, il doit rester
-privé !
+**[2] Installation des dépendances**
+```shell
+$ pip3 install -r requirements.txt
+```
 
-La suite se passe dans le panel OAuth :
-- on coche Bot
-- on sélectionne les permissions (en l'occurrence ici send-message et role-management, ou admin si l'on ne peut pas faire autrement)
-- une adresse est alors générée
-- il suffit de la coller dans un nouvel onglet
-- notre bot apparait alors, déconnecté
+**⚠︎** : *cette commande nécessite d'avoir une installation complète de python3*
 
-Pour le connecter, il suffit d'exécuter dans une console notre script python, et voir s'afficher le message
-*Bot is ready*
+
