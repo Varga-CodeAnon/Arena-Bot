@@ -108,7 +108,7 @@ async def logs(ctx, nom):
 
 def user_rootme(pseudo):
     """Verifie qu'un utilisateur est bien dans la bdd de root-me"""
-    url_rootme = 'https://www.root-me.org/' + pseudo
+    url_rootme = 'https://www.root-me.org/' + pseudo + '?lang=fr'
     page_rootme = requests.get(url_rootme)
     return page_rootme.status_code == 200
     # renvoie vrai ou faux en fonction de l'existence du pseudo
@@ -127,17 +127,17 @@ def score_rootme(pseudo):
     """Retourne le score du challenger <pseudo>"""
     # Note : La vérification de la présence de l'user
     # dans la bdd root-me est faite avant l'appel de la fonction, pas dans sa définition
-    url = 'https://www.root-me.org/' + pseudo
+    url = 'https://www.root-me.org/' + pseudo + '?lang=fr'
     page = requests.get(url)
     text = page.text  # on receptionne le code source de la page, et on la piege dans une variable
-    indice_points = text.find("Score&") + 24  # C'est à cette position qu'est placé le score du challenger
+    indice_points = text.find("squelettes/img/valid.svg?1566650916") + 105  # C'est à cette position qu'est placé le score du challenger
     score = ''
-    if indice_points != 23:
-        while text[indice_points] != '<':  # on parcourt le score
-            score += text[indice_points]
-            indice_points += 1
-    else:
-        score = '0'
+                 
+    while text[indice_points] != '<':  # on parcourt le score
+        score += text[indice_points]
+        indice_points += 1
+    if score == '':
+        score = '0'   
 
     return score
 
