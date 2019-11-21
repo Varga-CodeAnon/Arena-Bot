@@ -107,6 +107,17 @@ async def on_raw_reaction_remove(reaction):
             await member.remove_roles(role)
         print("done")
 
+    if message_id == 647057933045202945: # Message d'annonce du rôle chaman
+        server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
+        role = None
+
+        if reaction.emoji.name == '🧙‍♂️':
+            role = discord.utils.get(server.roles, name='Chaman')
+
+        if role is not None:
+            member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
+            await member.remove_roles(role)
+        print("done")
 
 # ------------------------------ DEFINITIONS -------------------------------- #
 async def logs(ctx, nom):
@@ -387,18 +398,19 @@ async def close(ctx):
 # Pour vous abonner à une section, n'hésitez pas à réagir à ce message avec \
 # la lettre correspondante !""")
 
-@arena_bot.command()
-async def chaman(ctx):
-    await ctx.send("""
-    Un nouveau rôle a été ajouté, celui de **Chaman**.
-    Un *chaman* est *"un sage, un thérapeute, un conseiller"* de l'informatique.
-    Si vous souhaitez aider les membres du serveur sur des questions relatives à \
-    leurs cursus scolaire et que vous avez la fibre d'un tuteur, alors \
-    attribuez-vous ce rôle en sur 'icone'
 
-    Il permettra aux membres ayant besoin d'aide au niveau de leurs cours \
-    d'invoquer les @Chaman dans le chan #licence, ou de les identifier plus \
-    facilement pour leur envoyer un message privé.""")
+# @arena_bot.command()
+# async def chaman(ctx):
+#     await ctx.send("""
+#     Un nouveau rôle a été ajouté, celui de **Chaman**.
+# Un ***Chaman*** est *"un sage, un thérapeute, un conseiller"* de l'Informatique & des Maths en licence.
+
+# Si vous souhaitez **aider** les membres du serveur sur des questions relatives à \
+# leur cursus scolaire et que vous avez la fibre d'un tuteur, alors \
+# attribuez-vous ce rôle en cliquant sur 🧙‍♂️
+# Il permettra aux membres ayant besoin d'aide au niveau de leurs cours \
+# d'invoquer les @Chaman dans le chan #licence , ou de les identifier plus \
+# facilement pour leur envoyer un message privé.""")
 
 # ================================== MAIN =================================== #
 arena_bot.run(token)  # on pouvait difficilement faire plus court
