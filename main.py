@@ -45,7 +45,7 @@ async def on_ready():  # quand le bot est prêt...
 @arena_bot.event
 async def on_raw_reaction_add(reaction):
     message_id = reaction.message_id
-    if message_id == 619522439545749514:
+    if message_id == 619522439545749514: # Message de bienvenue
         server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
         role = None
 
@@ -64,6 +64,18 @@ async def on_raw_reaction_add(reaction):
             role = discord.utils.get(server.roles, name='ia&maths')
 
         if role is not None:  # si le role choisi ne fait pas parti des 5 ci-dessus
+            member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
+            await member.add_roles(role)
+        print("done")
+
+    if message_id == 647057933045202945: # Message d'annonce du rôle chaman
+        server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
+        role = None
+
+        if reaction.emoji.name == '🧙‍♂️':
+            role = discord.utils.get(server.roles, name='Chaman')
+
+        if role is not None:
             member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
             await member.add_roles(role)
         print("done")
