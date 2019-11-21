@@ -43,35 +43,35 @@ async def on_ready():  # quand le bot est prêt...
 
 
 @arena_bot.event
-async def on_raw_reaction_add(payload):
-    message_id = payload.message_id
+async def on_raw_reaction_add(reaction):
+    message_id = reaction.message_id
     if message_id == 619522439545749514:
         server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
         role = None
 
         # on crée les associations emoji/role a l'aide de leur code point
         # on peut l'obtenir en tapant dans discord :
-        #              \:poop:
-        if payload.emoji.name == '🇨':
+        #              \:shinto_shrine:
+        if reaction.emoji.name == '🇨':
             role = discord.utils.get(server.roles, name='cybersec')
-        elif payload.emoji.name == '🇵':
+        elif reaction.emoji.name == '🇵':
             role = discord.utils.get(server.roles, name='programmation')
-        elif payload.emoji.name == '🇷':
+        elif reaction.emoji.name == '🇷':
             role = discord.utils.get(server.roles, name='réseau&web')
-        elif payload.emoji.name == '🇸':
+        elif reaction.emoji.name == '🇸':
             role = discord.utils.get(server.roles, name='système')
-        elif payload.emoji.name == '🇮':
+        elif reaction.emoji.name == '🇮':
             role = discord.utils.get(server.roles, name='ia&maths')
 
         if role is not None:  # si le role choisi ne fait pas parti des 5 ci-dessus
-            member = discord.utils.find(lambda m: m.id == payload.user_id, server.members)
+            member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
             await member.add_roles(role)
         print("done")
 
 
 @arena_bot.event
-async def on_raw_reaction_remove(payload):
-    message_id = payload.message_id
+async def on_raw_reaction_remove(reaction):
+    message_id = reaction.message_id
     if message_id == 619522439545749514:
         server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
         role = None
@@ -79,19 +79,19 @@ async def on_raw_reaction_remove(payload):
         # on crée les associations emoji/role a l'aide de leur code point
         # on peut l'obtenir en tapant dans discord :
         #              \:poop:
-        if payload.emoji.name == '🇨':
+        if reaction.emoji.name == '🇨':
             role = discord.utils.get(server.roles, name='cybersec')
-        elif payload.emoji.name == '🇵':
+        elif reaction.emoji.name == '🇵':
             role = discord.utils.get(server.roles, name='programmation')
-        elif payload.emoji.name == '🇷':
+        elif reaction.emoji.name == '🇷':
             role = discord.utils.get(server.roles, name='réseau&web')
-        elif payload.emoji.name == '🇸':
+        elif reaction.emoji.name == '🇸':
             role = discord.utils.get(server.roles, name='système')
-        elif payload.emoji.name == '🇮':
+        elif reaction.emoji.name == '🇮':
             role = discord.utils.get(server.roles, name='ia&maths')
 
         if role is not None:  # si le role est choisi fait parti des 5 ci-dessus
-            member = discord.utils.find(lambda m: m.id == payload.user_id, server.members)
+            member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
             await member.remove_roles(role)
         print("done")
 
