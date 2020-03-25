@@ -1,3 +1,4 @@
+ 
 #!/usr/bin/env python3.7
 # -*- coding: utf-8 -*-
 import discord
@@ -80,6 +81,30 @@ async def on_raw_reaction_add(reaction):
             await member.add_roles(role)
         print("done")
 
+    if message_id == 692337279460704306:  # Message d'annonce du rôle chaman
+        server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
+        role = None
+
+        if reaction.emoji.name == '🥚':
+            role = discord.utils.get(server.roles, name='L1')
+
+        if reaction.emoji.name == '🐤': 
+            role = discord.utils.get(server.roles, name='L2')
+
+        if reaction.emoji.name == '🐦':
+            role = discord.utils.get(server.roles, name='L3')
+
+        if reaction.emoji.name == '🦅':
+            role = discord.utils.get(server.roles, name='Master')
+
+        if reaction.emoji.name == '🦉':
+            role = discord.utils.get(server.roles, name='Professeur')
+
+        if role is not None:
+            member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
+            await member.add_roles(role)
+        print("done")
+
 
 @arena_bot.event
 async def on_raw_reaction_remove(reaction):
@@ -113,6 +138,30 @@ async def on_raw_reaction_remove(reaction):
 
         if reaction.emoji.name == '🧙‍♂️':
             role = discord.utils.get(server.roles, name='Chaman')
+
+        if role is not None:
+            member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
+            await member.remove_roles(role)
+        print("done")
+
+    if message_id == 692337279460704306:  # Message d'annonce du rôle chaman
+        server = arena_bot.get_guild(codeanon_id)  # on sélectionne le serveur CodeAnon
+        role = None
+
+        if reaction.emoji.name == '🥚':
+            role = discord.utils.get(server.roles, name='L1')
+
+        if reaction.emoji.name == '🐤':
+            role = discord.utils.get(server.roles, name='L2')
+
+        if reaction.emoji.name == '🐦':
+            role = discord.utils.get(server.roles, name='L3')
+
+        if reaction.emoji.name == '🦅':
+            role = discord.utils.get(server.roles, name='Master')
+
+        if reaction.emoji.name == '🦉':
+            role = discord.utils.get(server.roles, name='Professeur')
 
         if role is not None:
             member = discord.utils.find(lambda m: m.id == reaction.user_id, server.members)
@@ -222,7 +271,7 @@ def dans_1mn():
 def vendredi_pro_18h():
     """Calcule la date du prochain vendredi:18h à compter de l'exécution"""
     now = datetime.datetime.now()
-    day = now.weekday()  # attribue un indice aux jour de la semaine (lundi = 0)
+    day = now.weekday()  # attribue un indice aux jour de la semaine (lundi = 0)🐣
     next_vendredi = (4-day) % 7  # nombre de jour restant avant vendredi
     if day == 4 and now.time() > datetime.time(18, 00):
         next_vendredi = 7  # après 18h, il faudra attendre une semaine
@@ -367,8 +416,8 @@ async def flag(ctx, drapeau):
         member_name = str(member)
         await ctx.author.send("*Bravo " + member_name[:-5] + " ! Vous avez désormais le rôle **" + str(role.name)
                               + "** en guise de trophée, regardez votre profil :flag_black:*")
-
-
+                              
+                         
 @arena_bot.command()
 async def open(ctx):
     """Fait jouer le bot à "Local ouvert !" """
@@ -412,6 +461,17 @@ async def close(ctx):
 # d'invoquer les @Chaman dans le chan #licence , ou de les identifier plus \
 # facilement pour leur envoyer un message privé.""")
 
+#@arena_bot.command()
+#async def cours(ctx):
+    #await ctx.send("""
+    #De nouveaux rôles ont été ajouté :
+    #- L1 🥚
+    #- L2 🐤
+    #- L3 🐦
+    #- Master 🦅
+    #- Professeur 🦉
+
+#A très vite !""")
+
 # ================================== MAIN =================================== #
 arena_bot.run(token)  # on pouvait difficilement faire plus court
-
